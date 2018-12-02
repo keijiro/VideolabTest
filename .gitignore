@@ -1,0 +1,37 @@
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# Code Editors
+/.idea
+/.vscode
+/*.csproj
+/*.sln
+*.swp
+
+# Unity
+/Library
+/Temp
+
+# VideLab
+/Assets/Bezier
+/Assets/Bezier.meta
+/Assets/Editor
+/Assets/Editor.meta
+/Assets/Kino
+/Assets/Kino.meta
+/Assets/Klak
+/Assets/Klak.meta
+/Assets/Kvant
+/Assets/Kvant.meta
+/Assets/MidiJack
+/Assets/MidiJack.meta
+/Assets/Reaktion
+/Assets/Reaktion.meta
+/Assets/Skinner
+/Assets/Skinner.meta
+/Assets/Videolab
+/Assets/Videolab.meta
