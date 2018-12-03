@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Disc
+  m_Name: DiscKick
   m_Shader: {fileID: 4800000, guid: d2a22cd422b069e4aaf14330f45b20c5, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -64,10 +64,13 @@ Material:
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
+    - _NoiseAmp: 0
+    - _NoiseFreq: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _PolyCount: 64
-    - _Radius: 0.69
+    - _PolyCount: 128
+    - _Radius: 0
+    - _Seed: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1

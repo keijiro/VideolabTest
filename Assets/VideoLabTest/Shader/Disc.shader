@@ -3,6 +3,8 @@
     Properties
     {
         _Radius("Radius", Float) = 1
+        _NoiseFreq("Noise Frequency", Float) = 10
+        _NoiseAmp("Noise Amplitude", Float) = 0.1
         _Color("Color", Color) = (0.5, 0.5, 0.5, 1)
         _PolyCount("Poly Count", Int) = 256
     }
@@ -11,8 +13,11 @@
 
     #include "UnityCG.cginc"
     #include "Common.hlsl"
+    #include "ClassicNoise2D.hlsl"
 
     float _Radius;
+    float _NoiseFreq;
+    half _NoiseAmp;
     fixed4 _Color;
     uint _PolyCount;
 
@@ -22,11 +27,13 @@
         uint vidx = vertexID - pidx * 3; // Vertex index (0, 1, 2)
 
         // Polar coodinates
-        float phi = (pidx + (vidx == 2)) * UNITY_PI * 2 / _PolyCount;
+        float phi01 = (float)(pidx + (vidx == 2)) / _PolyCount;
+        float phi = phi01 * UNITY_PI * 2;
         float l = _Radius * (vidx > 0);
 
-        float rand = Random(pidx);
-        l *= lerp(1 - rand * 5, 1, rand > 0.1);
+        // Noise
+        half n = pnoise(float2(phi01 * _NoiseFreq, _Time.y * 10), _NoiseFreq);
+        l *= 1 + n * _NoiseAmp;
 
         // Apply transform
         float4 p = float4(cos(phi) * l, -sin(phi) * l, 0, 1);

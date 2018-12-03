@@ -64,7 +64,7 @@ Material:
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
-    - _Noise: 1
+    - _Noise: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _PolyCount: 8
