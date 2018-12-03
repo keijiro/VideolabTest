@@ -10,20 +10,26 @@
     CGINCLUDE
 
     #include "UnityCG.cginc"
+    #include "Common.hlsl"
 
     float _Radius;
     fixed4 _Color;
     uint _PolyCount;
 
-    float4 Vertex(uint vid : SV_VertexID) : SV_Position
+    float4 Vertex(uint vertexID : SV_VertexID) : SV_Position
     {
-        uint pidx = vid / 3;
-        uint vidx = vid - pidx * 3;
+        uint pidx = vertexID / 3;        // Primitive (triangle) index
+        uint vidx = vertexID - pidx * 3; // Vertex index (0, 1, 2)
 
+        // Polar coodinates
         float phi = (pidx + (vidx == 2)) * UNITY_PI * 2 / _PolyCount;
-        float r = _Radius * (vidx > 0);
+        float l = _Radius * (vidx > 0);
 
-        float4 p = float4(cos(phi) * r, -sin(phi) * r, 0, 1);
+        float rand = Random(pidx);
+        l *= lerp(1 - rand * 5, 1, rand > 0.1);
+
+        // Apply transform
+        float4 p = float4(cos(phi) * l, -sin(phi) * l, 0, 1);
         return UnityObjectToClipPos(p);
     }
 

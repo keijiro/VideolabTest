@@ -11,23 +11,31 @@
     CGINCLUDE
 
     #include "UnityCG.cginc"
+    #include "Common.hlsl"
 
     float _Radius;
     float _Width;
     fixed4 _Color;
     uint _PolyCount;
 
-    float4 Vertex(uint vid : SV_VertexID) : SV_Position
+    float4 Vertex(uint vertexID : SV_VertexID) : SV_Position
     {
-        uint pidx = vid / 3;
-        uint vidx = vid - pidx * 3;
+        uint pidx = vertexID / 3;        // Primitive (triangle) index
+        uint vidx = vertexID - pidx * 3; // Vertex index (0, 1, 2)
 
-        float phi = (pidx + vidx) * UNITY_PI * 2 / _PolyCount;
-        float offs = (vidx == 1 ^ (pidx & 1)) ? 0.5 : -0.5;
-        float r = _Radius + offs * _Width;
+        // Mask to hide triangles when _Width == 0.0
+        float mask = smoothstep(0, 0.001, _Width);
 
-        float4 p = float4(cos(phi) * r, -sin(phi) * r, 0, 1);
-        return UnityObjectToClipPos(p);
+        // Inside or outside?
+        float io = (vidx == 1 ^ (pidx & 1)) ? 1 : -1;
+
+        // Polar coodinates
+        float phi = (pidx + vidx * mask) * UNITY_PI * 2 / _PolyCount;
+        float l = _Radius + _Width * io * 0.5;
+
+        // Apply transform
+        float4 pos = float4(cos(phi) * l, -sin(phi) * l, 0, 1);
+        return UnityObjectToClipPos(pos);
     }
 
     fixed4 Fragment(float4 position : SV_Position) : SV_Target
