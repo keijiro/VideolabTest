@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: fd5d7f0a12146488fb6ac52196cb16e1
-timeCreated: 1543903192
+guid: a691a4a365126a5468d74db1f69fe5e0
+timeCreated: 1543930375
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Rat_01_Cube.048
-    400000: //RootNode
-    400002: Rat_01_Cube.048
-    2300000: Rat_01_Cube.048
-    3300000: Rat_01_Cube.048
-    4300000: Rat_01_Cube.048
+    100000: default
+    100002: //RootNode
+    400000: default
+    400002: //RootNode
+    2300000: default
+    3300000: default
+    4300000: default
   materials:
     importMaterials: 1
     materialName: 0
@@ -38,7 +38,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.1
+    globalScale: 0.24
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1

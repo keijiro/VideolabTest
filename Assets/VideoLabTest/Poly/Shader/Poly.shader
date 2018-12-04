@@ -20,8 +20,7 @@
         CGPROGRAM
 
         #pragma surface surf Lambert vertex:vert addshadow exclude_path:deferred exclude_path:prepass nolightmap
-        //#pragma multi_compile _MODTYPE_STRETCH _MODTYPE_SPIKE _MODTYPE_TWIST _MODTYPE_BEND
-#define _MODTYPE_STRETCH 1
+        #pragma multi_compile _MODTYPE_STRETCH _MODTYPE_SPIKE _MODTYPE_TWIST _MODTYPE_BEND
         #pragma target 3.0
 
         #include "../../Common/Shader/Common.hlsl"
