@@ -11,7 +11,7 @@
     CGINCLUDE
 
     #include "UnityCG.cginc"
-    #include "Common.hlsl"
+    #include "../../Common/Shader/Common.hlsl"
 
     float _Radius;
     float _Width;

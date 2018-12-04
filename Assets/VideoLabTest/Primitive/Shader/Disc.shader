@@ -12,8 +12,8 @@
     CGINCLUDE
 
     #include "UnityCG.cginc"
-    #include "Common.hlsl"
-    #include "ClassicNoise2D.hlsl"
+    #include "../../Common/Shader/Common.hlsl"
+    #include "../../Common/Shader/ClassicNoise2D.hlsl"
 
     float _Radius;
     float _NoiseFreq;

@@ -10,7 +10,8 @@ Shader "VideoLabTest/Horizon"
     CGINCLUDE
 
     #include "UnityCG.cginc"
-    #include "SimplexNoise2D.hlsl"
+    #include "../../Common/Shader/Common.hlsl"
+    #include "../../Common/Shader/SimplexNoise2D.hlsl"
 
     float _Noise;
     fixed4 _Color;
