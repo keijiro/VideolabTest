@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: FF9800
+  m_Name: koala
   m_Shader: {fileID: 4800000, guid: 003764d1d867b4cec86b4e1b6b5ac638, type: 3}
-  m_ShaderKeywords: _MODTYPE_STRETCH
+  m_ShaderKeywords: _MODTYPE_SPIKE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -65,7 +65,7 @@ Material:
     - _Metallic: 0
     - _ModAmount: 0
     - _ModParam: 1
-    - _ModType: 0
+    - _ModType: 1
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -75,6 +75,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0.596078, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _ModOrigin: {r: 0, g: 0, b: 0, a: 0}

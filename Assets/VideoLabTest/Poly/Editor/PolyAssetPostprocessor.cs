@@ -8,26 +8,27 @@ class PolyAssetPostprocessor : AssetPostprocessor
     void OnPostprocessModel(GameObject g)
     {
         if (!assetPath.StartsWith("Assets/VideoLabTest/Poly/")) return;
+
         foreach (var mf in g.GetComponentsInChildren<MeshFilter>())
-            ConvertMesh(mf.sharedMesh);
+        {
+            var mr = mf.gameObject.GetComponent<MeshRenderer>();
+            ConvertMesh(mf.sharedMesh, mr.sharedMaterials);
+        }
     }
 
-    void ConvertMesh(Mesh mesh)
+    void ConvertMesh(Mesh mesh, Material[] materials)
     {
         var src_vtx = mesh.vertices;
-        var src_uv0 = mesh.uv;
-        var hasUV = (src_uv0.Length > 0);
 
         var vtx = new List<Vector3>();
-        var uv0 = new List<Vector2>();
+        var uv0 = new List<Vector3>();
         var uv1 = new List<Vector3>();
-        var uv2 = new List<Vector3>();
-
-        var vcounts = new List<int>();
+        var col = new List<Color>();
 
         for (var subMesh = 0; subMesh < mesh.subMeshCount; subMesh++)
         {
             var src_idx = mesh.GetIndices(subMesh);
+            var color = materials[subMesh].color;
 
             for (var i = 0; i < src_idx.Length; i += 3)
             {
@@ -39,38 +40,29 @@ class PolyAssetPostprocessor : AssetPostprocessor
                 vtx.Add(src_vtx[i1]);
                 vtx.Add(src_vtx[i2]);
 
-                if (hasUV)
-                {
-                    uv0.Add(src_uv0[i0]);
-                    uv0.Add(src_uv0[i1]);
-                    uv0.Add(src_uv0[i2]);
-                }
+                uv0.Add(src_vtx[i1]);
+                uv0.Add(src_vtx[i2]);
+                uv0.Add(src_vtx[i0]);
 
-                uv1.Add(src_vtx[i1]);
                 uv1.Add(src_vtx[i2]);
                 uv1.Add(src_vtx[i0]);
+                uv1.Add(src_vtx[i1]);
 
-                uv2.Add(src_vtx[i2]);
-                uv2.Add(src_vtx[i0]);
-                uv2.Add(src_vtx[i1]);
+                col.Add(color);
+                col.Add(color);
+                col.Add(color);
             }
-
-            vcounts.Add(src_idx.Length);
         }
 
         mesh.SetVertices(vtx);
         mesh.normals = null;
-        if (hasUV) mesh.SetUVs(0, uv0);
+        mesh.SetUVs(0, uv0);
         mesh.SetUVs(1, uv1);
-        mesh.SetUVs(2, uv2);
-
-        var acc = 0;
-        for (var subMesh = 0; subMesh < mesh.subMeshCount; subMesh++)
-        {
-            var vc = vcounts[subMesh];
-            var idx = Enumerable.Range(acc, vc).ToArray();
-            mesh.SetIndices(idx, MeshTopology.Triangles, subMesh);
-            acc += vc;
-        }
+        mesh.SetColors(col);
+        mesh.SetIndices(
+            Enumerable.Range(0, vtx.Count).ToArray(),
+            MeshTopology.Triangles, 0
+        );
+        mesh.subMeshCount = 1;
     }
 }

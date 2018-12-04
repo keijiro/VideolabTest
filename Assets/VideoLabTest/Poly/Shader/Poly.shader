@@ -2,11 +2,6 @@
 {
     Properties
     {
-        _Color("Color", Color) = (1,1,1,1)
-        _MainTex("Albedo (RGB)", 2D) = "white" {}
-
-        [Header(Modifier)]
-
         [KeywordEnum(Stretch, Spike, Twist, Bend)]
         _ModType("Type", Float) = 0
         _ModAmount("Amount", Float) = 0
@@ -25,14 +20,11 @@
 
         #include "../../Common/Shader/Common.hlsl"
 
-        sampler2D _MainTex;
-        fixed4 _Color;
-
         float _ModAmount;
         float3 _ModOrigin;
         float _ModParam;
 
-        struct Input { float2 uv_MainTex; };
+        struct Input { float4 color : COLOR; };
 
         float2 cossin(float phi)
         {
@@ -68,7 +60,7 @@
         #endif
 
         #ifdef _MODTYPE_BEND
-            half yaw = Random(_ModParam) * UNITY_PI;
+            half yaw = Random(_ModParam) * UNITY_PI * 2;
 
             float4 cs = cossin(yaw).xyxy * float4(1, 1, -1, -1);
             float2x2 rot = float2x2(cs.xw, cs.yx);
@@ -93,18 +85,18 @@
         void vert(inout appdata_full v)
         {
             float3 p0 = Modifier(v.vertex.xyz);
-            float3 p1 = Modifier(v.texcoord1.xyz);
-            float3 p2 = Modifier(v.texcoord2.xyz);
+            float3 p1 = Modifier(v.texcoord.xyz);
+            float3 p2 = Modifier(v.texcoord1.xyz);
             v.vertex.xyz = p0;
             v.normal = normalize(cross(p1 - p0, p2 - p0));
         }
 
         void surf(Input IN, inout SurfaceOutput o)
         {
-            fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
-            o.Albedo = c.rgb;
-            o.Alpha = c.a;
+            o.Albedo = IN.color.rgb;
+            o.Alpha = IN.color.a;
         }
+
         ENDCG
     }
     FallBack "Diffuse"
