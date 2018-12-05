@@ -1,0 +1,7 @@
+"Colorful Man" by Lisa Padilla, published under a CC-BY license
+
+The mesh files contained in this directory were converted from the original
+Tilt Brush data shared on Google Poly. Please see the following page for
+further details.
+
+https://poly.google.com/view/2s0cpvWShgk
