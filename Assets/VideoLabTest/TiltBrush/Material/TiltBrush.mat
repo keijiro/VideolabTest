@@ -85,4 +85,4 @@ Material:
     - _Effect4: {r: 0, g: 0, b: 0, a: 1}
     - _Effect5: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _LineColor: {r: 0.14824599, g: 0.17647055, b: 0.0687716, a: 0.522}
+    - _LineColor: {r: 0.19852942, g: 0.14743729, b: 0.15060852, a: 0.522}

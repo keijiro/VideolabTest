@@ -41,6 +41,8 @@
         float phi = (r * 2 + uv.x + _Time.y * 3) * UNITY_PI;
         position.z += sin(phi) * _Deform;
 
+        color.rgb = LinearToGammaSpace(color.rgb);
+
         color.rgb *= 1 +
             Range(0.0, 0.2, r) * _Effect1 +
             Range(0.2, 0.4, r) * _Effect2 +
@@ -58,8 +60,8 @@
     ) : SV_Target
     {
         fixed i1 = sin(uv.y * UNITY_PI);
-        fixed i2 = (1 + cos(uv.x * 3)) / 2;
-        color *= (1 + i1 * i2) / 2;
+        fixed i2 = (cos(uv.x * 3) + 1) / 2;
+        color *= 0.7 + i1 * i2 * 0.5;
 
         half fw = fwidth(uv.y);
         half ln = saturate(1 - min(uv.y, 1 - uv.y) / fw);
