@@ -15,6 +15,7 @@ ModelImporter:
     100014: Hat
     100016: Kick
     100018: Snare
+    100020: Click
     400000: default
     400002: //RootNode
     400004: Text_CUText_None
@@ -25,6 +26,7 @@ ModelImporter:
     400014: Hat
     400016: Kick
     400018: Snare
+    400020: Click
     2300000: default
     2300002: Text_CUText_None
     2300004: Text
@@ -34,6 +36,7 @@ ModelImporter:
     2300012: Hat
     2300014: Kick
     2300016: Snare
+    2300018: Click
     3300000: default
     3300002: Text_CUText_None
     3300004: Text
@@ -43,6 +46,7 @@ ModelImporter:
     3300012: Hat
     3300014: Kick
     3300016: Snare
+    3300018: Click
     4300000: default
     4300002: Text_CUText_None
     4300004: Text
@@ -52,6 +56,7 @@ ModelImporter:
     4300012: Hat
     4300014: Kick
     4300016: Snare
+    4300018: Click
   materials:
     importMaterials: 0
     materialName: 0
@@ -95,8 +100,8 @@ ModelImporter:
     useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 0
-    tangentImportMode: 3
+    normalImportMode: 2
+    tangentImportMode: 2
   importAnimation: 0
   copyAvatar: 0
   humanDescription:
