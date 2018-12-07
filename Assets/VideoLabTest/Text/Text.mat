@@ -60,7 +60,7 @@ Material:
     - _Deform: 0
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Freq: 5
+    - _Freq: 3
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -70,7 +70,7 @@ Material:
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 16
+    - _Speed: 12
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
