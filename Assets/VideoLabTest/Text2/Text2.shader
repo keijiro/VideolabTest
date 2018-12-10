@@ -6,9 +6,9 @@ Shader "VideoLabTest/Text2"
         _Deform("Deformation", Float) = 0
 
         [Header(Pattern Parameters)]
-        _Color("Color 1", Color) = (1, 1, 1, 1)
+        _Color1("Color 1", Color) = (1, 1, 1, 1)
         _Color2("Color 2", Color) = (0, 0, 0, 1)
-        _Radius("Radius", Float) = 1
+        _Size("Size", Float) = 1
 
         [Header(Pattern Transformation)]
         _Offset("Offset (X,Y,0,0)", Vector) = (0, 0, 0, 0)
@@ -23,9 +23,9 @@ Shader "VideoLabTest/Text2"
 
     half _Deform;
 
-    half4 _Color;
+    half4 _Color1;
     half4 _Color2;
-    half _Radius;
+    half _Size;
 
     half2 _Offset;
     half2 _Scale;
@@ -66,9 +66,9 @@ Shader "VideoLabTest/Text2"
 
         float d = length(float2(fx, fy) - 0.5);
         float fw = max(fwidth(uv.x), fwidth(uv.y));
-        float cp = saturate((_Radius * (0.3 + 0.2 * n) - d) / fw);
+        float cp = saturate((_Size * (0.3 + 0.2 * n) - d) / fw);
 
-        return lerp(_Color, _Color2, cp);
+        return lerp(_Color1, _Color2, cp);
     }
 
     ENDCG
