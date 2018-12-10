@@ -6,6 +6,8 @@ Shader "VideoLabTest/Text2"
         _Deform("Deformation", Float) = 0
 
         [Header(Pattern Parameters)]
+        [KeywordEnum(Dots, Bars)]
+        _Type("Type", Float) = 0
         _Color1("Color 1", Color) = (1, 1, 1, 1)
         _Color2("Color 2", Color) = (0, 0, 0, 1)
         _Size("Size", Float) = 1
@@ -56,6 +58,8 @@ Shader "VideoLabTest/Text2"
         // Offset
         uv += _Offset * half2(-1, 1);
 
+        #if defined(_TYPE_DOTS)
+
         float y = uv.y;
         float x = uv.x + 0.5 * (frac(uv.y / 2) > 0.5);
 
@@ -68,6 +72,14 @@ Shader "VideoLabTest/Text2"
         float fw = max(fwidth(uv.x), fwidth(uv.y));
         float cp = saturate((_Size * (0.3 + 0.2 * n) - d) / fw);
 
+        #elif defined(_TYPE_BARS)
+
+        float n = snoise(float2(uv.x, _Time.y));
+        float fw = fwidth(uv.x) * 2;
+        float cp = saturate(1 - (abs(n) - _Size + fw) / (fw * (1 + fw)));
+
+        #endif
+
         return lerp(_Color1, _Color2, cp);
     }
 
@@ -79,6 +91,7 @@ Shader "VideoLabTest/Text2"
         {
             Cull Off
             CGPROGRAM
+            #pragma multi_compile _TYPE_DOTS _TYPE_BARS
             #pragma vertex Vertex
             #pragma fragment Fragment
             ENDCG
