@@ -3,24 +3,8 @@ Shader "VideoLabTest/Splash"
     CGINCLUDE
 
     #include "UnityCG.cginc"
+    #include "../Common/Shader/Common.hlsl"
     #include "../Common/Shader/SimplexNoise2D.hlsl"
-
-    // Hash function from H. Schechter & R. Bridson, goo.gl/RXiKaH
-    uint Hash(uint s)
-    {
-        s ^= 2747636419u;
-        s *= 2654435769u;
-        s ^= s >> 16;
-        s *= 2654435769u;
-        s ^= s >> 16;
-        s *= 2654435769u;
-        return s;
-    }
-
-    float Random(uint seed)
-    {
-        return float(Hash(seed)) / 4294967295.0; // 2^32-1
-    }
 
     float4 Vertex(
         float4 position : POSITION,
@@ -43,7 +27,7 @@ Shader "VideoLabTest/Splash"
 
         // Animated radius parameter
         float tp = 1 - time;
-        float radius = 1 - tp * tp * tp * tp;
+        float radius = 1 - tp * tp * tp * tp * tp * tp;
 
         // Zero centered UV
         float2 uv = texcoord.xy - 0.5;
@@ -62,21 +46,22 @@ Shader "VideoLabTest/Splash"
         // Potential = radius + noise * radius ^ 3;
         float p = radius * (0.23 + radius * radius * (n1p * 0.9 + n2 * 0.07));
 
-        // Antialiased thresholding
-        float l = length(uv);
-        float a = smoothstep(l - 0.01, l, p);
+        // Slitline pattern
+        float sp = abs(1 - frac(uv.y * 16) * 2);
 
-        return half4(color.rgb, color.a * a);
+        // Cutout
+        clip(min(p - length(uv), sp + 4 - time * 5));
+
+        return color;
     }
 
     ENDCG
 
     SubShader
     {
+        Tags { "Queue" = "AlphaTest" }
         Pass
         {
-            ZWrite Off
-            Blend SrcAlpha One
             CGPROGRAM
             #pragma vertex Vertex
             #pragma fragment Fragment
