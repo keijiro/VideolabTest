@@ -1,15 +1,21 @@
 Shader "VideoLabTest/Splash"
 {
+    Properties
+    {
+        _Color("Color", Color) = (1, 0, 0, 1)
+    }
+
     CGINCLUDE
 
     #include "UnityCG.cginc"
     #include "../Common/Shader/Common.hlsl"
     #include "../Common/Shader/SimplexNoise2D.hlsl"
 
+    half4 _Color;
+
     float4 Vertex(
         float4 position : POSITION,
-        inout float4 texcoord : TEXCOORD,
-        inout half4 color : COLOR
+        inout float4 texcoord : TEXCOORD
     ) : SV_Position
     {
         return UnityObjectToClipPos(position);
@@ -17,8 +23,7 @@ Shader "VideoLabTest/Splash"
 
     half4 Fragment(
         float4 position : SV_Position,
-        float4 texcoord : TEXCOORD,
-        half4 color : COLOR
+        float4 texcoord : TEXCOORD
     ) : SV_Target
     {
         // Parameters from the particle system
@@ -27,7 +32,7 @@ Shader "VideoLabTest/Splash"
 
         // Animated radius parameter
         float tp = 1 - time;
-        float radius = 1 - tp * tp * tp * tp * tp * tp;
+        float radius = 1 - tp * tp * tp * tp * tp * tp * tp * tp;
 
         // Zero centered UV
         float2 uv = texcoord.xy - 0.5;
@@ -52,7 +57,7 @@ Shader "VideoLabTest/Splash"
         // Cutout
         clip(min(p - length(uv), sp + 4 - time * 5));
 
-        return color;
+        return _Color;
     }
 
     ENDCG

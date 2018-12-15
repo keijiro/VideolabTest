@@ -7,6 +7,7 @@ Shader "VideoLabTest/Shutter"
         _Repeat("Repeat", Float) = 10
         _Angle("Angle", Float) = 0
         _Threshold("Threshold", Range(0, 1)) = 0.5
+        _Border("Border", Float) = 0.1
     }
 
     CGINCLUDE
@@ -19,6 +20,7 @@ Shader "VideoLabTest/Shutter"
     half _Repeat;
     half _Angle;
     half _Threshold;
+    half _Border;
 
     float4 Vertex(float4 position : POSITION) : SV_Position
     {
@@ -41,7 +43,11 @@ Shader "VideoLabTest/Shutter"
         // Color parameter
         float i = saturate((abs(frac(p) - 0.5) * 2 - th) / fw);
 
-        return lerp(_Color2, _Color1, i);
+        // Border
+        float bd = _Border * _ScreenParams.x;
+        i += any(position.xy < bd) + any(position.xy > _ScreenParams.xy - bd);
+
+        return lerp(_Color2, _Color1, saturate(i));
     }
 
     ENDCG
