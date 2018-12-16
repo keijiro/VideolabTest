@@ -1,0 +1,7 @@
+The obj files contained in this directory are created by Google and released
+under a CC-BY license. Please see the following pages for further details.
+
+- Duck     https://poly.google.com/view/frSLi6b6Vid
+- Kangaroo https://poly.google.com/view/3yiIERrKNQr
+- Koala    https://poly.google.com/view/9x4UY7n27nI
+- Rat      https://poly.google.com/view/9h_k4Jkm3Le
