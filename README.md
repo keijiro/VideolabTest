@@ -4,7 +4,7 @@ VideolabTest
 ![gif](https://i.imgur.com/CNAe3Uk.gif)
 ![gif](https://i.imgur.com/2PNr9Vt.gif)
 
-This repository contains several example scenes for [OP-Z] [videolab].
+This repository contains several examples of [OP-Z] [videolab] visuals.
 
 [OP-Z]: https://www.teenageengineering.com/products/op-z
 [videolab]: https://github.com/teenageengineering/videolab
@@ -12,25 +12,26 @@ This repository contains several example scenes for [OP-Z] [videolab].
 Version dependency
 ------------------
 
-Currently this project uses [videolab-1.0] that is compatible with OP-Z iOS app
-v1.0.x.
+Currently this project is dependent on [videolab-1.0] that is compatible with
+OP-Z v1.0 iOS app.
 
 [videolab-1.0]: https://github.com/teenageengineering/videolab/releases/tag/v1.0
 
-Note that Unity 5.6 is required to build videopaks with it.
+This repository doesn't include the videolab package. You have to manually
+install `videolab-1.0.unitypackage` to open the examples on Unity Editor.
 
-This repository doesn't contain videolab files. You have to manually install
-videolab when editing the examples on Unity.
+Note that you should use Unity 5.6 when building videopaks; It's the only
+version compatible with OP-Z v1.0.
 
-Try them without Unity
-----------------------
+Try without Unity
+-----------------
 
 You can try the videopaks without Unity.
 
-1. Download zipped videopaks from the [Releases] page.
-2. Connect an iOS device to Mac and open it on iTunes.
-3. Open the File Sharing page and select OP-Z from the Apps list.
-4. Drag and drop the extracted videopaks folder into the Documents pane.
+1. Download one of the videopak zip files from [Releases].
+2. Connect an iOS device to a computer and open it on iTunes.
+3. Open File Sharing view and select OP-Z from Apps.
+4. Drag and drop the extracted videopaks folder into Documents.
 
 ![drag and drop](https://i.imgur.com/pBFS2S2.png)
 
@@ -39,8 +40,8 @@ You can try the videopaks without Unity.
 License
 -------
 
-Obj files in `Assets/VideolabTest/Poly/Model` ([Kangaroo], [Koala], [Rat],
-[Duck]) are created by Google and put under a [CC-BY] license.
+Obj files contained in `Assets/VideolabTest/Poly/Model` ([Kangaroo], [Koala],
+[Rat], [Duck]) are created by Google and released under a [CC-BY] license.
 
 [Kangaroo]: https://poly.google.com/view/3yiIERrKNQr
 [Koala]: https://poly.google.com/view/9x4UY7n27nI
@@ -48,13 +49,12 @@ Obj files in `Assets/VideolabTest/Poly/Model` ([Kangaroo], [Koala], [Rat],
 [Duck]: https://poly.google.com/view/frSLi6b6Vid
 [CC-BY]: https://creativecommons.org/licenses/by/3.0/
 
-A TiltBlush sketch used in the "TiltBrush" example was created by Lisa Padilla
-and put under a [CC-BY] license. See the Poly page ("[Colorful Man]") for
-further details.
+A TiltBlush sketch used in "TiltBrush" was created by Lisa Padilla and
+published under a [CC-BY] license. See the original Poly page "[Colorful Man]"
+for further details.
 
 [Colorful Man]: https://poly.google.com/view/2s0cpvWShgk
 
-All other files contained in this directory are basically created by me and
-published under [CC0].
+All other parts of this project are put under [CC0].
 
 [CC0]: https://creativecommons.org/share-your-work/public-domain/cc0/
