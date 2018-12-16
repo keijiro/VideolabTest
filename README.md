@@ -31,9 +31,9 @@ You can try the videopaks without Unity.
 1. Download one of the videopak zip files from [Releases].
 2. Connect an iOS device to a computer and open it on iTunes.
 3. Open File Sharing view and select OP-Z from Apps.
-4. Drag and drop the extracted videopaks folder into Documents.
+4. Drag and drop the extracted videopaks folder into OP-Z Documents.
 
-![drag and drop](https://i.imgur.com/pBFS2S2.png)
+![drag and drop](https://i.imgur.com/Rk5IvFq.png)
 
 [Releases]: https://github.com/keijiro/VideolabTest/releases
 
@@ -49,7 +49,7 @@ Obj files contained in `Assets/VideolabTest/Poly/Model` ([Kangaroo], [Koala],
 [Duck]: https://poly.google.com/view/frSLi6b6Vid
 [CC-BY]: https://creativecommons.org/licenses/by/3.0/
 
-A TiltBlush sketch used in "TiltBrush" was created by Lisa Padilla and
+A TiltBlush sketch used in "TiltBrush" scene was created by Lisa Padilla and
 published under a [CC-BY] license. See the original Poly page "[Colorful Man]"
 for further details.
 
