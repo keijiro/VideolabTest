@@ -1,4 +1,4 @@
-﻿Shader "VideoLabTest/DiscParticle"
+﻿Shader "VideolabTest/DiscParticle"
 {
     CGINCLUDE
 

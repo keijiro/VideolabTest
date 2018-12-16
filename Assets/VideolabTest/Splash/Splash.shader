@@ -1,4 +1,4 @@
-Shader "VideoLabTest/Splash"
+Shader "VideolabTest/Splash"
 {
     Properties
     {

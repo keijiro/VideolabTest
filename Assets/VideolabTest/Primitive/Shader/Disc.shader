@@ -1,4 +1,4 @@
-﻿Shader "VideoLabTest/Disc"
+﻿Shader "VideolabTest/Disc"
 {
     Properties
     {

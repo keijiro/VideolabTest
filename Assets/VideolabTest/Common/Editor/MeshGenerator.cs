@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace VideoLabTest
+namespace VideolabTest
 {
     static class MeshGenerator
     {
@@ -13,7 +13,7 @@ namespace VideoLabTest
             for (var i = 1; i < 15; i++)
             {
                 var count = (int)Mathf.Pow(2, i);
-                var path = "Assets/VideoLabTest/Mesh/Mesh" + count + ".asset";
+                var path = "Assets/VideolabTest/Mesh/Mesh" + count + ".asset";
                 AssetDatabase.CreateAsset(CreateMesh(count), path);
             }
         }

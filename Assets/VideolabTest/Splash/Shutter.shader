@@ -1,4 +1,4 @@
-Shader "VideoLabTest/Shutter"
+Shader "VideolabTest/Shutter"
 {
     Properties
     {

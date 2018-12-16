@@ -1,4 +1,4 @@
-﻿Shader "VideoLabTest/RingParticle"
+﻿Shader "VideolabTest/RingParticle"
 {
     Properties
     {

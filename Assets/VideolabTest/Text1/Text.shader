@@ -1,4 +1,4 @@
-Shader "VideoLabTest/Text"
+Shader "VideolabTest/Text"
 {
     Properties
     {

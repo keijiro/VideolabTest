@@ -1,4 +1,4 @@
-﻿Shader "VideoLabTest/Poly"
+﻿Shader "VideolabTest/Poly"
 {
     Properties
     {

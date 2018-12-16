@@ -1,4 +1,4 @@
-Shader "VideoLabTest/Horizon"
+Shader "VideolabTest/Horizon"
 {
     Properties
     {

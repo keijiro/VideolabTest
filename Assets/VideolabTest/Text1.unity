@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872716, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -151,25 +151,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wiringNodePosition: {x: 144, y: 0}
-  _useResponseCurve: 0
   _responseCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0
-      value: 0
+      time: -100
+      value: -100
       inSlope: 0
       outSlope: 1
-      tangentMode: 0
+      tangentMode: 69
     - serializedVersion: 2
-      time: 1
-      value: 1
+      time: 100
+      value: 100
       inSlope: 1
-      outSlope: 0
-      tangentMode: 0
+      outSlope: 1
+      tangentMode: 69
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   _interpolator:
     _interpolationType: 0
     _interpolationSpeed: 10
@@ -423,25 +422,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wiringNodePosition: {x: 984, y: 240}
-  _useResponseCurve: 0
   _responseCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0
-      value: 0
+      time: -100
+      value: -100
       inSlope: 0
       outSlope: 1
-      tangentMode: 0
+      tangentMode: 69
     - serializedVersion: 2
-      time: 1
-      value: 1
+      time: 100
+      value: 100
       inSlope: 1
-      outSlope: 0
-      tangentMode: 0
+      outSlope: 1
+      tangentMode: 69
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   _interpolator:
     _interpolationType: 0
     _interpolationSpeed: 10
@@ -517,25 +515,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wiringNodePosition: {x: 144, y: -96}
-  _useResponseCurve: 0
   _responseCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0
-      value: 0
+      time: -100
+      value: -100
       inSlope: 0
       outSlope: 1
-      tangentMode: 0
+      tangentMode: 69
     - serializedVersion: 2
-      time: 1
-      value: 1
+      time: 100
+      value: 100
       inSlope: 1
-      outSlope: 0
-      tangentMode: 0
+      outSlope: 1
+      tangentMode: 69
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   _interpolator:
     _interpolationType: 0
     _interpolationSpeed: 10
@@ -653,11 +650,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: Klak.Wiring.NodeBase+VoidEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  _noteOnNumberEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Klak.Wiring.NodeBase+FloatEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   _noteOnVelocityEvent:
     m_PersistentCalls:
@@ -7583,11 +7575,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Klak.Wiring.NodeBase+VoidEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _noteOnNumberEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Klak.Wiring.NodeBase+FloatEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   _noteOnVelocityEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -7750,25 +7737,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wiringNodePosition: {x: 984, y: 144}
-  _useResponseCurve: 0
   _responseCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0
-      value: 0
+      time: -100
+      value: -100
       inSlope: 0
       outSlope: 1
-      tangentMode: 0
+      tangentMode: 69
     - serializedVersion: 2
-      time: 1
-      value: 1
+      time: 100
+      value: 100
       inSlope: 1
-      outSlope: 0
-      tangentMode: 0
+      outSlope: 1
+      tangentMode: 69
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   _interpolator:
     _interpolationType: 0
     _interpolationSpeed: 10
@@ -7900,11 +7886,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Klak.Wiring.NodeBase+VoidEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _noteOnNumberEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Klak.Wiring.NodeBase+FloatEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   _noteOnVelocityEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -7948,25 +7929,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wiringNodePosition: {x: 984, y: 0}
-  _useResponseCurve: 0
   _responseCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0
-      value: 0
+      time: -100
+      value: -100
       inSlope: 0
       outSlope: 1
-      tangentMode: 0
+      tangentMode: 69
     - serializedVersion: 2
-      time: 1
-      value: 1
+      time: 100
+      value: 100
       inSlope: 1
-      outSlope: 0
-      tangentMode: 0
+      outSlope: 1
+      tangentMode: 69
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   _interpolator:
     _interpolationType: 0
     _interpolationSpeed: 10
@@ -8029,25 +8009,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wiringNodePosition: {x: 984, y: -96}
-  _useResponseCurve: 0
   _responseCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0
-      value: 0
+      time: -100
+      value: -100
       inSlope: 0
       outSlope: 1
-      tangentMode: 0
+      tangentMode: 69
     - serializedVersion: 2
-      time: 1
-      value: 1
+      time: 100
+      value: 100
       inSlope: 1
-      outSlope: 0
-      tangentMode: 0
+      outSlope: 1
+      tangentMode: 69
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   _interpolator:
     _interpolationType: 0
     _interpolationSpeed: 10
@@ -8110,25 +8089,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wiringNodePosition: {x: 144, y: 144}
-  _useResponseCurve: 0
   _responseCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0
-      value: 0
+      time: -100
+      value: -100
       inSlope: 0
       outSlope: 1
-      tangentMode: 0
+      tangentMode: 69
     - serializedVersion: 2
-      time: 1
-      value: 1
+      time: 100
+      value: 100
       inSlope: 1
-      outSlope: 0
-      tangentMode: 0
+      outSlope: 1
+      tangentMode: 69
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   _interpolator:
     _interpolationType: 0
     _interpolationSpeed: 10
@@ -8302,11 +8280,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: Klak.Wiring.NodeBase+VoidEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  _noteOnNumberEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Klak.Wiring.NodeBase+FloatEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   _noteOnVelocityEvent:
     m_PersistentCalls:
@@ -11558,25 +11531,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wiringNodePosition: {x: 144, y: 240}
-  _useResponseCurve: 0
   _responseCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0
-      value: 0
+      time: -100
+      value: -100
       inSlope: 0
       outSlope: 1
-      tangentMode: 0
+      tangentMode: 69
     - serializedVersion: 2
-      time: 1
-      value: 1
+      time: 100
+      value: 100
       inSlope: 1
-      outSlope: 0
-      tangentMode: 0
+      outSlope: 1
+      tangentMode: 69
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   _interpolator:
     _interpolationType: 0
     _interpolationSpeed: 10

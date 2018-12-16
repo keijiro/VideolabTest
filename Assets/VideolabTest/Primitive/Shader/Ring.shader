@@ -1,4 +1,4 @@
-﻿Shader "VideoLabTest/Ring"
+﻿Shader "VideolabTest/Ring"
 {
     Properties
     {

@@ -1,4 +1,4 @@
-Shader "VideoLabTest/Boing"
+Shader "VideolabTest/Boing"
 {
     Properties
     {

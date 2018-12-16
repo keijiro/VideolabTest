@@ -7,7 +7,7 @@ class PolyAssetPostprocessor : AssetPostprocessor
 {
     void OnPostprocessModel(GameObject g)
     {
-        if (!assetPath.StartsWith("Assets/VideoLabTest/Poly/")) return;
+        if (!assetPath.StartsWith("Assets/VideolabTest/Poly/")) return;
 
         foreach (var mf in g.GetComponentsInChildren<MeshFilter>())
         {

@@ -1,4 +1,4 @@
-﻿Shader "VideoLabTest/TiltBrush"
+﻿Shader "VideolabTest/TiltBrush"
 {
     Properties
     {
