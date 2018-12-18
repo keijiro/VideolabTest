@@ -34,7 +34,7 @@ Shader "VideolabTest/Solid"
     {
         clip(elevation);
         half d = dot(_WorldSpaceLightPos0.xyz, normalize(normal));
-        return d < 0 ? _FillColor : _ShadowColor;
+        return d > 0 ? _FillColor : _ShadowColor;
     }
 
     float4 VertexShadow(
