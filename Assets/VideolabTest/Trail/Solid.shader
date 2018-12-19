@@ -64,6 +64,7 @@ Shader "VideolabTest/Solid"
     {
         Pass
         {
+            Tags { "LightMode" = "ForwardBase" }
             CGPROGRAM
             #pragma vertex VertexFill
             #pragma fragment FragmentFill
@@ -71,6 +72,7 @@ Shader "VideolabTest/Solid"
         }
         Pass
         {
+            Tags { "LightMode" = "ForwardBase" }
             CGPROGRAM
             #pragma vertex VertexShadow
             #pragma fragment FragmentShadow
