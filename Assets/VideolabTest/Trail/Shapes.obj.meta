@@ -14,6 +14,7 @@ ModelImporter:
     100012: Frustum
     100014: Icosahedron
     100016: Ring
+    100018: Octahedron
     400000: Box
     400002: Cone
     400004: Cylinder
@@ -23,6 +24,7 @@ ModelImporter:
     400012: Frustum
     400014: Icosahedron
     400016: Ring
+    400018: Octahedron
     2300000: Box
     2300002: Cone
     2300004: Cylinder
@@ -31,6 +33,7 @@ ModelImporter:
     2300010: Frustum
     2300012: Icosahedron
     2300014: Ring
+    2300016: Octahedron
     3300000: Box
     3300002: Cone
     3300004: Cylinder
@@ -39,6 +42,7 @@ ModelImporter:
     3300010: Frustum
     3300012: Icosahedron
     3300014: Ring
+    3300016: Octahedron
     4300000: Box
     4300002: Cone
     4300004: Cylinder
@@ -47,6 +51,7 @@ ModelImporter:
     4300010: Frustum
     4300012: Icosahedron
     4300014: Ring
+    4300016: Octahedron
   materials:
     importMaterials: 0
     materialName: 0
