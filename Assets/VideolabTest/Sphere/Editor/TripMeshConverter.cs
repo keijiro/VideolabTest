@@ -51,7 +51,7 @@ class TripMeshConverter
 
         for (var i = 0; i < src_idx.Length; i += 3)
         {
-            var pid = (float)i / src_idx.Length;
+            var pid = i / 3;
 
             var i0 = src_idx[i + 0];
             var i1 = src_idx[i + 1];

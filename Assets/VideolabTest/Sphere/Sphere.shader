@@ -37,7 +37,7 @@ Shader "VideolabTest/Sphere"
         out fixed4 params : COLOR // bc_coord.xyz, alpha
     ) : SV_Position
     {
-        uint pid = texcoord0.w * 65536;
+        uint pid = texcoord0.w;
         uint vid = texcoord1.w;
         uint group = Hash(pid) & 7;
 
@@ -47,10 +47,14 @@ Shader "VideolabTest/Sphere"
         half3 normal = normalize(cross(p1 - p0, p2 - p0));
 
         half alpha = saturate(
-            (group == 0) * _Effect1 + (group == 1) * _Effect2 +
-            (group == 2) * _Effect3 + (group == 3) * _Effect4 +
-            (group == 4) * _Effect5 + (group == 5) * _Effect6 +
-            (group == 6) * _Effect7 + (group == 7) * _Effect8
+            (group == 0 ? 1.0 : 0.0) * _Effect1 +
+            (group == 1 ? 1.0 : 0.0) * _Effect2 +
+            (group == 2 ? 1.0 : 0.0) * _Effect3 +
+            (group == 3 ? 1.0 : 0.0) * _Effect4 +
+            (group == 4 ? 1.0 : 0.0) * _Effect5 +
+            (group == 5 ? 1.0 : 0.0) * _Effect6 +
+            (group == 6 ? 1.0 : 0.0) * _Effect7 +
+            (group == 7 ? 1.0 : 0.0) * _Effect8
         );
         alpha *= (dot(_WorldSpaceLightPos0.xyz, normal) + 1) / 2;
 
