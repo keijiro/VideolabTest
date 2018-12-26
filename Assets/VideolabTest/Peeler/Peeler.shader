@@ -4,8 +4,10 @@ Shader "VideolabTest/Peeler"
     {
         _FillColor("Fill Color", Color) = (1, 1, 1, 1)
         _LineColor("Line Color", Color) = (0, 0, 0, 1)
-        _Deform("Deform", Float) = 0.5
-        _CutOff("CutOff", Range(0, 1)) = 0.5
+        _Deform1("Deform 1", Float) = 0.5
+        _Deform2("Deform 2", Float) = 0.5
+        _CutOff1("CutOff 1", Range(0, 1)) = 0.5
+        _CutOff2("CutOff 2", Range(0, 1)) = 0.5
     }
     CGINCLUDE
 
@@ -13,13 +15,16 @@ Shader "VideolabTest/Peeler"
     #include "../Common/Shader/Common.hlsl"
     #include "../Common/Shader/SimplexNoise3D.hlsl"
 
+    half3 _LightColor0;
+
     fixed3 _FillColor, _LineColor;
-    fixed _Deform, _CutOff;
+    fixed _Deform1, _CutOff1;
+    fixed _Deform2, _CutOff2;
 
     float3 Deform(float3 p)
     {
-        float3 np = p * 4 + float3(0, _Time.y * 2, 0);
-        return p * (1 + _Deform * snoise(np));
+        float3 np = p * 3 + float3(0, 2, 0) * _Time.y;
+        return p * (1 + _Deform1 * snoise(np) + _Deform2 * snoise(np * 3));
     }
 
     void Vertex(
@@ -33,11 +38,9 @@ Shader "VideolabTest/Peeler"
     )
     {
         uint vid = texcoord1.w;
-
         float3 p0 = Deform(position.xyz);
         float3 p1 = Deform(texcoord0.xyz);
         float3 p2 = Deform(texcoord1.xyz);
-
         half3 n0 = normalize(cross(p1 - p0, p2 - p0));
 
         cs_position = UnityObjectToClipPos(float4(p0, 1));
@@ -56,20 +59,21 @@ Shader "VideolabTest/Peeler"
     {
         bool flip = vface < 0;
 
-        float3 np = os_position * float3(1, 10, 1);
-        np += float3(2, 0, 0) * _Time.y;
+        float3 np1 = os_position * float3(1, 10, 1) + float3(2, 0, 0) * _Time.y;
+        float3 np2 = os_position * float3(10, 1, 1) + float3(0, 2, 0) * _Time.y;
+        half2 pot = half2(snoise(np1), snoise(np2)) + 1 - half2(_CutOff1, _CutOff2) * 2;
 
-        half pot = snoise(np) + 1 - _CutOff * 2;
-        clip(pot);
+        clip(max(pot.x, pot.y));
 
-        half4 ep = half4(bc_coord, pot) / fwidth(half4(bc_coord, pot * 2));
-        half edge = saturate(1 - min(min(min(ep.x, ep.y), ep.z), ep.w));
+        half3 ep = bc_coord / fwidth(bc_coord);
+        half2 pp = pot / fwidth(pot * 2);
+        half edge = saturate(1 - min(min(min(ep.x, ep.y), ep.z), max(pp.x, pp.y)));
 
         half3 nrm = normalize((flip ? -1 : 1) * ws_normal);
         half l = dot(_WorldSpaceLightPos0.xyz, nrm) * 0.5 + 0.5;
 
         half3 c = lerp(_FillColor, _LineColor, edge);
-        c *= l * (flip ? 0.5 : 1);
+        c *= _LightColor0 * l * (flip ? 0.5 : 1);
 
         return half4(c, 1);
     }
