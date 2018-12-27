@@ -57,8 +57,8 @@ Material:
     m_Floats:
     - _BumpScale: 1
     - _CutOff: 0
-    - _CutOff1: 0.57
-    - _CutOff2: 0.52
+    - _CutOff1: 0
+    - _CutOff2: 0
     - _Cutoff: 0.5
     - _Deform: 0
     - _Deform1: 0
@@ -68,6 +68,14 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _Group1: 0
+    - _Group2: 0
+    - _Group3: 0
+    - _Group4: 0
+    - _Lit1: 0.2
+    - _Lit2: 0
+    - _Lit3: 0
+    - _Lit4: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -82,3 +90,4 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FillColor: {r: 0.13002811, g: 0.18684039, b: 0.27205884, a: 1}
     - _LineColor: {r: 1, g: 0.04411763, b: 0.04411763, a: 1}
+    - _LitColor: {r: 1, g: 1, b: 1, a: 1}

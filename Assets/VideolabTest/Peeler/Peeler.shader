@@ -8,7 +8,12 @@ Shader "VideolabTest/Peeler"
         _Deform2("Deform 2", Float) = 0.5
         _CutOff1("CutOff 1", Range(0, 1)) = 0.5
         _CutOff2("CutOff 2", Range(0, 1)) = 0.5
+        _Group1("Highlight Group 1", Range(0, 1)) = 0
+        _Group2("Highlight Group 2", Range(0, 1)) = 0
+        _Group3("Highlight Group 3", Range(0, 1)) = 0
+        _Group4("Highlight Group 4", Range(0, 1)) = 0
     }
+
     CGINCLUDE
 
     #include "UnityCG.cginc"
@@ -20,6 +25,7 @@ Shader "VideolabTest/Peeler"
     fixed3 _FillColor, _LineColor;
     fixed _Deform1, _CutOff1;
     fixed _Deform2, _CutOff2;
+    fixed _Group1, _Group2, _Group3, _Group4;
 
     float3 Deform(float3 p)
     {
@@ -34,41 +40,60 @@ Shader "VideolabTest/Peeler"
         out float4 cs_position : SV_Position,
         out float3 os_position : TEXCOORD,
         out half3 ws_normal : NORMAL,
-        out fixed3 bc_coord : COLOR
+        out fixed4 params : COLOR // bc_coord.xyz, hightlight
     )
     {
+        uint pid = texcoord0.w;
         uint vid = texcoord1.w;
+        uint group = Hash(pid) & 3;
+
         float3 p0 = Deform(position.xyz);
         float3 p1 = Deform(texcoord0.xyz);
         float3 p2 = Deform(texcoord1.xyz);
+
         half3 n0 = normalize(cross(p1 - p0, p2 - p0));
+
+        half hl = saturate(
+            (group == 0 ? 1.0 : 0.0) * _Group1 +
+            (group == 1 ? 1.0 : 0.0) * _Group2 +
+            (group == 2 ? 1.0 : 0.0) * _Group3 +
+            (group == 3 ? 1.0 : 0.0) * _Group4
+        );
 
         cs_position = UnityObjectToClipPos(float4(p0, 1));
         os_position = position.xyz;
         ws_normal = UnityObjectToWorldNormal(n0);
-        bc_coord = fixed3(vid == 0, vid == 1, vid == 2);
+        params = fixed4(vid == 0, vid == 1, vid == 2, hl);
     }
 
     fixed4 Fragment(
         float4 cs_position : SV_Position,
         float3 os_position : TEXCOORD,
         half3 ws_normal : NORMAL,
-        fixed3 bc_coord : COLOR,
+        fixed4 params : COLOR,
         half vface : VFACE
     ) : SV_Target
     {
         bool flip = vface < 0;
 
+        // Highlighting
+        half hl = params.w * 1.1 - min(min(params.x, params.y), params.z) * 3;
+
+        // Noise field potential
         float3 np1 = os_position * float3(1, 10, 1) + float3(2, 0, 0) * _Time.y;
         float3 np2 = os_position * float3(10, 1, 1) + float3(0, 2, 0) * _Time.y;
-        half2 pot = half2(snoise(np1), snoise(np2)) + 1 - half2(_CutOff1, _CutOff2) * 2;
+        half2 npot = half2(snoise(np1), snoise(np2)) + 1 - half2(_CutOff1, _CutOff2) * 2;
 
-        clip(max(pot.x, pot.y));
+        // Cutout
+        clip(max(hl, max(npot.x, npot.y)));
 
-        half3 ep = bc_coord / fwidth(bc_coord);
-        half2 pp = pot / fwidth(pot * 2);
-        half edge = saturate(1 - min(min(min(ep.x, ep.y), ep.z), max(pp.x, pp.y)));
+        // Edge detection
+        half3 e1 = params.xyz / fwidth(params.xyz);
+        half2 e2 = npot / fwidth(npot * 2);
+        half edge = saturate(1 - min(min(min(e1.x, e1.y), e1.z), max(e2.x, e2.y)));
+        edge = max(edge, smoothstep(0, 0.1, hl));
 
+        // Lighting
         half3 nrm = normalize((flip ? -1 : 1) * ws_normal);
         half l = dot(_WorldSpaceLightPos0.xyz, nrm) * 0.5 + 0.5;
 
