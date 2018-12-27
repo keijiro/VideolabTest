@@ -74,7 +74,11 @@ Shader "VideolabTest/Peeler"
         half vface : VFACE
     ) : SV_Target
     {
+        #ifdef SHADER_API_METAL
+        bool flip = vface > 0;
+        #else
         bool flip = vface < 0;
+        #endif
 
         // Highlighting
         half hl = params.w * 1.1 - min(min(params.x, params.y), params.z) * 3;
