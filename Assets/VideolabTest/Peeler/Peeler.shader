@@ -74,7 +74,8 @@ Shader "VideolabTest/Peeler"
         half vface : VFACE
     ) : SV_Target
     {
-        #ifdef SHADER_API_METAL
+        // Workaround for issue #926424
+        #if UNITY_VERSION < 570 && defined(SHADER_API_MOBILE)
         bool flip = vface > 0;
         #else
         bool flip = vface < 0;
