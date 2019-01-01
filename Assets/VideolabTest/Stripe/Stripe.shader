@@ -46,7 +46,7 @@ Shader "VideolabTest/Stripe"
         float rot_cos = cos(_Rotation);
         uv = mul(float2x2(rot_cos, -rot_sin, rot_sin, rot_cos), uv);
 
-        float y = (uv.y * _Rows * 2 + 0.5) + 0.5;
+        float y = uv.y * _Rows * 2 + 1;
         float ln = floor(y);
 
         uint id0 = ln + floor(_Seed    ) * 30;
@@ -56,11 +56,12 @@ Shader "VideolabTest/Stripe"
         float x1 = (uv.x + Random(id1 + 12345)) * lerp(0, 20, Random(id1));
 
         float p = frac(_Seed);
-        float n = snoise(float2(lerp(x0, x1, p), ln * 100 + 50));
+        float3 n = snoise_grad(float2(lerp(x0, x1, p), ln * 100 + 50));
 
-        n -= (y - ln) < 0.05 ? 2.0 : 0.0;
+        half cp1 = (n.z - _Threshold) * 20;
+        half cp2 = (1 - abs(y - ln - 0.5) * 2.1) / (fwidth(y) * 2);
 
-        return lerp(_Color1, _Color2, n > _Threshold);
+        return lerp(_Color1, _Color2, min(saturate(cp1), saturate(cp2)));
     }
 
     ENDCG
