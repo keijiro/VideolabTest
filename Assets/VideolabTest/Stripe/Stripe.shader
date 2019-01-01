@@ -58,7 +58,7 @@ Shader "VideolabTest/Stripe"
         float p = frac(_Seed);
         float3 n = snoise_grad(float2(lerp(x0, x1, p), ln * 100 + 50));
 
-        half cp1 = (n.z - _Threshold) * 20;
+        half cp1 = (n.z - _Threshold) * 100;
         half cp2 = (1 - abs(y - ln - 0.5) * 2.1) / (fwidth(y) * 2);
 
         return lerp(_Color1, _Color2, min(saturate(cp1), saturate(cp2)));
