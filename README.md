@@ -29,6 +29,8 @@ Try without Unity
 
 You can try the videopaks without Unity.
 
+#### Steps for iOS OP-Z app
+
 1. Download one of the videopak zip files from [Releases].
 2. Connect an iOS device to a computer and open it on iTunes.
 3. Open File Sharing view and select OP-Z from Apps.
@@ -37,6 +39,15 @@ You can try the videopaks without Unity.
 ![drag and drop](https://i.imgur.com/Rk5IvFq.png)
 
 [Releases]: https://github.com/keijiro/VideolabTest/releases
+
+#### Steps for macOS OP-Z app
+
+1. Download one of the videopak zip files from [Releases].
+2. Select OP-Z app in the Application folder, and then select "Show Package
+   Contents" from the right click menu.
+3. Navigate to Contents > Resources > Data > StreamingAssets > videopaks.
+4. Extract and copy the contents of the videopak zip file into the
+   videopaks folder.
 
 License
 -------
