@@ -12,17 +12,17 @@ This repository contains several examples of [OP-Z] [videolab] visuals.
 Version dependency
 ------------------
 
-Currently this project is dependent on [videolab-1.1] that is compatible with
-OP-Z v1.1 iOS app.
+Currently this project is dependent on [videolab-1.1.1] that is compatible with
+OP-Z v1.2 iOS app.
 
 This repository doesn't include the videolab package. You have to manually
 install `videolab-1.1.unitypackage` to open the examples on Unity Editor.
 
-Note that you should use Unity 2018.2 when building videopaks; It's the only
-version compatible with OP-Z v1.1.
+Note that you should use Unity 2018.4 when building videopaks; It's the only
+version compatible with OP-Z v1.2.
 
-[videolab-1.1]:
-  https://github.com/teenageengineering/videolab/releases/tag/v1.1
+[videolab-1.1.1]:
+  https://github.com/teenageengineering/videolab/releases/tag/v1.1.1
 
 Try without Unity
 -----------------
